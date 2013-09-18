@@ -1,16 +1,6 @@
-=content_for :carousel do
-	:coffeescript
-		$(document).ready ->
-			$('#viewport').carousel '#previous', '#next'
-			return
-	#viewport
-		%ul
-			%li 1
-			%li 2
-			%li 3
-			%li 4
-			%li 5
-	%a(id= 'next' class='pull-right')
-		Previous
-	%a(id= 'previous' class='pull-left')
-		Next
+#app(ng-app='Home')
+  .ginev-carousel
+    %li.1 1
+    %li.2.ci-active 2
+    %li.3 3
+    %li.4 4
