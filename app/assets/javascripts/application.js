@@ -11,7 +11,9 @@
 // about supported directives.
 //
 //= require jquery
+//= require bower_components/angular/angular.js
 //= require jquery_ujs
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+

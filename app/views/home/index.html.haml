@@ -1,2 +1,16 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+=content_for :carousel do
+	:coffeescript
+		$(document).ready ->
+			$('#viewport').carousel '#previous', '#next'
+			return
+	#viewport
+		%ul
+			%li 1
+			%li 2
+			%li 3
+			%li 4
+			%li 5
+	%a(id= 'next' class='pull-right')
+		Previous
+	%a(id= 'previous' class='pull-left')
+		Next
