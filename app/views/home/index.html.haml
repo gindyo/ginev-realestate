@@ -1,6 +1,24 @@
-#app(ng-app='Home')
-  .ginev-carousel
-    %li.1 1
-    %li.2.ci-active 2
-    %li.3 3
-    %li.4 4
+=content_for :carousel do
+  #app(ng-app='Home' ng-controller='HomeCtrl')
+    .ginev-carousel
+      =image_tag '1.jpg', {'data-caption'=>'blabla'}
+      =image_tag '2.jpg'
+      =image_tag '3.jpg'
+      =image_tag '4.jpg'
+      =image_tag '5.jpg'
+.row-fluid
+  #cary-and-listings.span12
+
+    #listings.span6
+      %h3
+        My listings
+    #cary.span6
+      #slogan
+        %span
+          Cary Monroe
+        .span5
+          This is some of Cary's favorite quotes
+      %span#photo-frame
+        =image_tag 'cary.jpg'
+  
+#areas(style="height: 500px")
