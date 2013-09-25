@@ -1,24 +1,30 @@
 =content_for :carousel do
   #app(ng-app='Home' ng-controller='HomeCtrl')
     .ginev-carousel
-      =image_tag '1.jpg', {'data-caption'=>'blabla'}
-      =image_tag '2.jpg'
-      =image_tag '3.jpg'
-      =image_tag '4.jpg'
-      =image_tag '5.jpg'
+      -@featured_units.each do |unit|
+        .property-for-carousel{'unit'=> unit.to_json}
 .row-fluid
   #cary-and-listings.span12
-
-    #listings.span6
+    #listings.span4
       %h3
         My listings
-    #cary.span6
-      #slogan
-        %span
+
+      =link_to :search do 
+        =image_tag '/assets/mapblur.png'
+      .row-fluid
+        .span6
+          =link_to 'Properties', '/properties'
+        .span6
+          =link_to 'Open houses'
+
+    #cary.span8
+      .span3
+      #slogan.span5
+        #name
           Cary Monroe
-        .span5
-          This is some of Cary's favorite quotes
-      %span#photo-frame
-        =image_tag 'cary.jpg'
+        I really enjoy working with people on what is usually a major life decision. It gives me great pleasure to bring a deal to a conclusion that is satisfactory to both sides.
+      .span4.pull-right
+        #photo-frame
+          =image_tag 'cary.jpg'
   
 #areas(style="height: 500px")
