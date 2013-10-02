@@ -1,0 +1,20 @@
+!!!
+%html
+  %head
+    %meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+      %title= content_for?(:title) ? yield(:title) : "Ginev"
+      %meta{:content => content_for?(:description) ? yield(:description) : "Ginev", :name => "description"}
+        = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Lato:300,400,700|Cinzel+Decorative:400,700|Ubuntu:500'
+        = stylesheet_link_tag "bootstrap_and_overrides", :media => "all"
+        = stylesheet_link_tag 'home/index'
+        = javascript_include_tag "application"
+        = javascript_include_tag params[:controller]
+        = csrf_meta_tags
+        = yield(:head)
+     
+  %body{:class => "#{controller_name} #{action_name}"}
+    #app(ng-app='Home' ng-controller='HomeCtrl')
+      = yield
+
+    %footer

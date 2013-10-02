@@ -1,14 +1,14 @@
 @import "bootstrap";
-body { padding-top: 60px; }
 @import "bootstrap-responsive";
+body { padding-top: 5px; }
 h1,h2{
 	font-weight: 700;
-	font-family: 'Cinzel Decorative', cursive;
+	font-family: 'Cinzel Decorative', Times;
 }
 
 h3,h4, h5{
 	font-weight: 400;
-	font-family: 'Cinzel Decorative', cursive;
+	font-family: 'Cinzel Decorative', Times;
 }
 
 p{
@@ -16,7 +16,59 @@ p{
 	font-family: 'Lato', sans-serif;
 }
 a{
+  color: black;
 	font-weight: 400;
-	font-family: 'Ubuntu'
+	font-family: 'lato';
+  text-decoration: none;
+  outline: 0;
+}
+a:hover{
+  outline: 0;
+  text-decoration: none;
+  color: black;
+  opacity: 1;
+  border-bottom: 1px dotted
 }
 
+a:active{
+  outline:0;
+  text-decoration: none
+}
+#top-navigation{
+  position:relative;
+}
+
+#top-navigation #logo{
+  position: absolute;
+  z-index: 100;
+  float: left;
+}
+
+#top-navigation #logo:hover{
+  border: none
+}
+  
+#top-navigatiov, #logo, img{
+  margin-bottom: -10px;
+  z-idex:1000
+}
+#top-navigation #links{
+  position: absolute;
+  margin-top: 20px;
+  right: 0px;
+}
+#top-navigation #links{
+  font-size: x-large;
+}
+
+
+#main{
+  margin-top: 68px;
+  position: relative;
+  overflow: hidden;
+}
+
+.content {
+  margin-top: 10px;
+  overflow: hidden;
+}

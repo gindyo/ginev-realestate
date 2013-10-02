@@ -1,3 +1,8 @@
-%h1
-  =link_to root_path do
-    =image_tag "/assets/logo.png"
+=link_to root_path, {id: 'logo'} do
+  =image_tag "/assets/logo2.png"
+#links
+  =link_to 'for sale', '/properties/for_sale'
+  |
+  =link_to 'for rent', '/properties/for_rent'
+  |
+  =link_to 'about', '/about'

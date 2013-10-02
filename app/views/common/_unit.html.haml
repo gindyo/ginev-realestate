@@ -1,0 +1,10 @@
+.ginev-unit-wrap
+  %h4
+    =@section[:title]
+    
+  =link_to 'View all', "properties/all"
+  .ginev-unit
+    =image_tag @section[:unit][:img_url]
+    %h5.address
+      =@section[:unit][:address]
+

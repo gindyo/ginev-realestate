@@ -1,30 +1,55 @@
-=content_for :carousel do
-  #app(ng-app='Home' ng-controller='HomeCtrl')
-    .ginev-carousel
-      -@featured_units.each do |unit|
-        .property-for-carousel{'unit'=> unit.to_json}
-.row-fluid
-  #cary-and-listings.span12
-    #listings.span4
-      %h3
-        My listings
-
-      =link_to :search do 
-        =image_tag '/assets/mapblur.png'
-      .row-fluid
-        .span6
-          =link_to 'Properties', '/properties'
-        .span6
-          =link_to 'Open houses'
-
-    #cary.span8
-      .span3
-      #slogan.span5
-        #name
-          Cary Monroe
-        I really enjoy working with people on what is usually a major life decision. It gives me great pleasure to bring a deal to a conclusion that is satisfactory to both sides.
-      .span4.pull-right
+#top-navigation.container
+  = render 'layouts/navigation'
+#main{:role => "main"}
+  #carousel(ginev-carousel)
+    -@featured_properties.each do |unit|
+      .property-for-carousel{'unit'=> unit.to_json}
+  .container
+    #agent-and-listings
+      #listings
+        %h3
+          My listings
+        =link_to :search do 
+          =image_tag '/assets/mapblur.png'
+        =link_to 'Properties', '/properties'
+        &nbsp;|&nbsp;
+        =link_to 'Open houses'
+      #agent
+        #slogan
+          %h4#name
+            Dimitar Ginev
+          I really had to shave before I took this picture, but ohhh well :). I hope you at least like the image carousel on top (self made and crammed into an Angular directive) 
         #photo-frame
-          =image_tag 'cary.jpg'
-  
-#areas(style="height: 500px")
+          =image_tag 'agent.jpg'
+        
+  #areas
+    #nav-wrap
+      #navigation.container(navigation1)
+        %span(data-content = '#ventnor')
+          =link_to 'Ventnor', js_void
+        %span(data-content = '#margate')
+          =link_to 'Margate', js_void
+        %span(data-content = '#longport')
+          =link_to 'Longport', js_void
+        %span(data-content = '#ocean-city')
+          =link_to 'Ocean City', js_void
+        %span(data-content = '#brigantine')
+          =link_to 'Brigantine', js_void
+    .container
+      #ventnor.hide
+        -for @section in @sections
+          =render 'common/unit'
+          
+      #margate.hide
+        margate content
+      #longport.hide
+        longport
+      #ocean-city.hide
+        OC content
+      #brigantine.hide
+        Brig content
+
+
+
+          
+        

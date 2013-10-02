@@ -1,0 +1,75 @@
+<div id="results-page" ng-app="Index" ng-controller='IndexCtrl'>
+  <div class="container">
+    <div class='pie' id='filters'>
+      <div class='slider_wrap'>
+        <span>Price Range:</span>
+        <div class="text-center">{{filters.ranges.price.current[0]}}-{{filters.ranges.price.current[1]}}</div>
+        <div re-slider range="true" min="{{filters.ranges.price.edges[0]}}" max='{{filters.ranges.price.edges[1]}}' slider-change='priceSliderChange(values)'></div>
+        <br>
+        <span>Bedrooms Range:</span>
+        <div class="text-center">{{filters.ranges.bedrooms.current[0]}}-{{filters.ranges.bedrooms.current[1]}}</div>
+        <div re-slider range="true" min="{{filters.ranges.bedrooms.edges[0]}}" max='{{filters.ranges.bedrooms.edges[1]}}' slider-change='bedroomsSliderChange(values)'></div>
+        <br> 
+        <span>Bathrooms Range:</span>
+        <br>
+
+        <div class="text-center">{{filters.ranges.bathrooms.current[0]}}-{{filters.ranges.bathrooms.current[1]}}</div>
+        <div re-slider range="true" min="{{filters.ranges.bathrooms.edges[0]}}" max='{{filters.ranges.bathrooms.edges[1]}}' slider-change='bathroomsSliderChange(values)'></div>
+      </div>
+
+    </div>
+    <table>
+      <tr>
+        <td>
+          <label >Limit results to:</label>
+        </td>
+        <td>
+            <label >Order by:</label>
+        </td>
+        <td>
+          
+        </td>
+        <td align='middle'>
+          Showing:
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <select ng-model='pagination.numPerPage'>
+            <option value='4'>4</option>
+            <option value='8'>8</option>
+            <option value='16'>16</option>
+            <option value='32'>32</option>
+            <option value='64'>64</option>
+          </select>
+        </td>
+        <td>
+            <select ng-model='filters.orderBy'>
+              <option value='price'>price</option>
+              <option value='bathrooms'>bathrooms</option>
+              <option value='bedrooms'>bedrooms</option>
+              <option value='address'>address</option>
+            </select>
+        </td>
+        <td align='middle'>
+          <i class='icon-arrow-{{filters.orderDirection()}}' ng-click='reverseOrder()'></i>
+        </td>
+        <td align='middle'>
+           {{filters.inRangeIndexes.length}} from: {{pagination.totalUnits()}}
+        </td>
+      </tr>
+    </table>
+      <div class='gallery' on-unit-click='open_unit' re-units-gallery units='currentPage' progress-bar='showProgressBar()'></div>
+      <div class='clear'></div>
+      <div class='pagination_wrap'>
+        <span class='pagination' current-page='pagination.currentPage' max-size='5' num-pages='pagination.numOfPages' on-select-page='changePage(page)' pagination></span>
+        <span id='to_page'>
+          go to page:
+          <input class='number' min='1' ng-model='pagination.currentPage' type='number'>
+          from {{pagination.numOfPages()}}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class='re-unit'></div>
