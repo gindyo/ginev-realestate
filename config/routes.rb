@@ -4,5 +4,5 @@ Monroe::Application.routes.draw do
   get '/angular-directives'=> 'home#angular_directives'
   get '/search' => 'search#inedex', as: :search
   get '/properties' => 'properties#index'
-  get '/properties/area/:id' => 'properties#area'
+  get '/properties/:action' => 'properties#:action'
 end

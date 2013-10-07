@@ -9,7 +9,7 @@
         = stylesheet_link_tag "bootstrap_and_overrides", :media => "all"
         = stylesheet_link_tag 'home/index'
         = javascript_include_tag "application"
-        = javascript_include_tag params[:controller]
+        = javascript_include_tag "home"
         = csrf_meta_tags
         = yield(:head)
      
@@ -17,4 +17,4 @@
     #app(ng-app='Home' ng-controller='HomeCtrl')
       = yield
 
-    %footer
+    .footer

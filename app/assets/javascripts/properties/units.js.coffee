@@ -10,15 +10,15 @@ angular.module('Index').factory 'units', (server)->
       unit = {}
       unit.id = u[meta.id]
       unit.price = u[meta.price]
-      unit.imgUrl = meta.img_domain + u[meta.img_url]
+      unit.picture = if u[meta.picture][0] != '/' then meta.img_domain + u[meta.picture] else u[meta.picture]
       unit.bedrooms = u[meta.bedrooms]
       unit.bathrooms = u[meta.bathrooms]
       unit.address = u[meta.address]
       unit
 
-    load = (id)->
+    load = (properties_type, callback)->
       window.units = []
-      server.areaUnits id, (data)->
+      server.getProperties (properties_type || 'all'), (data)->
         for u in data.units 
           all.push u  
           window.units.push u
@@ -32,7 +32,9 @@ angular.module('Index').factory 'units', (server)->
         filters.ranges.bathrooms.edges = [bathrooms_edges[0], bathrooms_edges[1]]
         filters.ranges.bedrooms.current = [bedrooms_edges[0], bedrooms_edges[1]]
         filters.ranges.bedrooms.edges = [bedrooms_edges[0], bedrooms_edges[1]]
+        callback() if callback
         applyFilters()
+        return
    
     allUnits = ->
       units = []
@@ -41,14 +43,17 @@ angular.module('Index').factory 'units', (server)->
       units
     
     calculateNumOfPages = ->
-      if filters.inRangeIndexes.length > pagination.numPerPage then Math.ceil(filters.inRangeIndexes.length / pagination.numPerPage) else 1 
+      if filters.inRangeIndexes && filters.inRangeIndexes && filters.inRangeIndexes.length > pagination.numPerPage 
+        Math.ceil(filters.inRangeIndexes.length / pagination.numPerPage) 
+      else
+        1 
     
     pagination = {
       totalUnits: ->all.length
       currentPage: 1
       numPerPage: 8
     }
-    pagination['numOfPages'] = calculateNumOfPages
+    pagination['numOfPages'] = 0 
 
     filters['reverseIt'] = false
 
@@ -138,11 +143,13 @@ angular.module('Index').factory 'units', (server)->
 
     splitArr = (a)->
       midpoint = Math.floor a.length/2
-      a1 = a.splice(midpoint)
+      a1 = a.splice(midpoint, a.length-midpoint)
       [a1, a]
     
-
+    counter = 0
     mergeSort = (arr, pos)->
+      counter = counter + 1
+      console.log counter if counter % 100 == 0
       sorted = []
       if arr.length == 1
         return arr
@@ -165,6 +172,27 @@ angular.module('Index').factory 'units', (server)->
           while m1.length > 0
             sorted.push m1.shift()
           return sorted
+
+    merge = (left, right, pos)->
+      res = []
+      lkey = 0
+      rkey = 0
+      while(lkey < left.lenght && rkey < right.length)
+        if (left[lkey][pos]<right[rkey][pos])
+          res.push left[lkey]
+          lkey = lkey + 1
+        else
+          res.push right[rkey]
+          rkey = rkey + 1
+      return res.concat(left.slice(lkey), right.slice(rkey))
+
+    mergeSort1= (input, pos)->
+      if input.length < 2
+        return input
+      divideElem = Math.floor(input.length / 2)
+      left = input.splice(0, divideElem)
+      right = input.slice(divideElem)
+      return merge(mergeSort(left), mergeSort(right), pos)
 
     
 

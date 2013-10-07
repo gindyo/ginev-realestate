@@ -21,10 +21,11 @@ angular.module('Index').controller 'IndexCtrl', ($scope, server, units, $routePa
 
   $scope.units.applyFilters()
   unless $scope.units.unitsLoaded()
-    $scope.units.load(unitsCache.area)
+    $scope.units.load(window.propertiesToGet)
   $scope.$watch 'units.filters.inRangeIndexes[0] | json',->
     $scope.currentPage = $scope.units.currentPage()
     $scope.units.applyFilters()
+
   $scope.bathroomsSliderChange = (values)->
     $scope.filters.ranges.bathrooms.current[0] = values.lo
     $scope.filters.ranges.bathrooms.current[1] = values.hi
@@ -39,6 +40,10 @@ angular.module('Index').controller 'IndexCtrl', ($scope, server, units, $routePa
     $scope.filters.ranges.bedrooms.current[0] = values.lo
     $scope.filters.ranges.bedrooms.current[1] = values.hi
     $scope.units.applyFilters()
+    updatePage()
+
+  $scope.pageSliderChange = (values)->
+    $scope.pagination.currentPage = values.lo
     updatePage()
   updatePage = ->
     $scope.$apply ->  
@@ -60,4 +65,3 @@ angular.module('Index').controller 'IndexCtrl', ($scope, server, units, $routePa
     $scope.units.resort()
     $scope.units.applyFilters()
     $scope.currentPage = $scope.units.currentPage()
-  

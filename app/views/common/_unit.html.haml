@@ -2,9 +2,9 @@
   %h4
     =@section[:title]
     
-  =link_to 'View all', "properties/all"
+  =link_to 'View all', "/properties"
   .ginev-unit
-    =image_tag @section[:unit][:img_url]
+    =image_tag @section[:property][:picture]
     %h5.address
-      =@section[:unit][:address]
+      =@section[:property][:address]
 

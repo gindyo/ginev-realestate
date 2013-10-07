@@ -15,12 +15,14 @@ gem 'simple_form', '>= 3.0.0.rc'
 gem 'thin'
 
 group :development do
-
+  gem 'byebug'
+  gem 'spork-rails'
   gem 'newrelic_rpm'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
   gem 'guard-bundler'
   gem 'guard-rails'
   gem 'guard-rspec'
+  gem 'guard-spork'
   gem 'guard-livereload'
   gem 'html2haml'
   gem 'quiet_assets'

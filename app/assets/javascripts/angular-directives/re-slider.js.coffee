@@ -17,15 +17,14 @@
       high.innerHTML = '{{slidingMax}}'
       high.setAttribute('style', 'position: absolute; right: -20px; bottom: -20px')
       element.prepend(high)
-      link = (scope, element, attrs)->
+      
+      link = (scope, element, attrs)->      
         @rangeWidth = 0
-        range = false
         scope.$watch 'min + max + range', =>
+          slider_options = {min: 1, max: scope.max, animate: 'slow'}
+          slider_options = {range: scope.range, values: [0,100]} if scope.range == true 
           @rangeWidth = scope.max - scope.min
-          element.slider()
-          element.slider
-            range: scope.range
-            values: [1, 100]
+          element.slider(slider_options)
             
         currentMinValue = -> 
           if element.slider('values')[0] == 0
@@ -37,6 +36,10 @@
         
         element.slider
           stop: ->
-            scope.sliderChange({values: {lo:currentMinValue(),hi:currentMaxValue()}})
-          
+            if scope.range
+              scope.sliderChange({values: {lo:currentMinValue(),hi:currentMaxValue()}})
+            else
+              scope.sliderChange({values: {lo:element.slider('value')}})
+          slide: (event, ui)->
+            $(ui.handle).text(ui.value) if attrs.showValues
      

@@ -1,7 +1,7 @@
 angular.module('Server', []).service 'server', ($http)->
-  areaUnits = (id, callback)->
+  getProperties = (properties_type, callback)->
     returnedData = null
-    url = '/properties/area/'+id
+    url = '/properties/'+properties_type
     $http.get(url).
       success (data)=>
         callback data
@@ -17,7 +17,7 @@ angular.module('Server', []).service 'server', ($http)->
         callback data
 
   return {
-    areaUnits: areaUnits
+    getProperties: getProperties
     allAreas: allAreas
     getUnit: getUnit
   }

@@ -21,11 +21,12 @@ a{
 	font-family: 'lato';
   text-decoration: none;
   outline: 0;
+  cursor: pointer
 }
 a:hover{
   outline: 0;
   text-decoration: none;
-  color: black;
+  color: #aa0000;
   opacity: 1;
   border-bottom: 1px dotted
 }
@@ -71,4 +72,12 @@ a:active{
 .content {
   margin-top: 10px;
   overflow: hidden;
+}
+.container{
+  width: 1170px
+}
+.footer{
+  margin-top: 100px;
+  height: 300px;
+  background: #303030
 }

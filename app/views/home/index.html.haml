@@ -9,11 +9,13 @@
       #listings
         %h3
           My listings
-        =link_to :search do 
+        =link_to '/properties', class: 'no-decoration' do 
           =image_tag '/assets/mapblur.png'
-        =link_to 'Properties', '/properties'
-        &nbsp;|&nbsp;
-        =link_to 'Open houses'
+        .text-links
+          =link_to '/properties' do
+            Properties
+          &nbsp;|&nbsp;
+          =link_to 'Open houses', '/properties'
       #agent
         #slogan
           %h4#name
@@ -25,30 +27,17 @@
   #areas
     #nav-wrap
       #navigation.container(navigation1)
-        %span(data-content = '#ventnor')
-          =link_to 'Ventnor', js_void
-        %span(data-content = '#margate')
-          =link_to 'Margate', js_void
-        %span(data-content = '#longport')
-          =link_to 'Longport', js_void
-        %span(data-content = '#ocean-city')
-          =link_to 'Ocean City', js_void
-        %span(data-content = '#brigantine')
-          =link_to 'Brigantine', js_void
-    .container
-      #ventnor.hide
-        -for @section in @sections
-          =render 'common/unit'
+        -for area in @all_areas_construct
+          %span{"data-content" => "##{area[:name].sub(" ", "-")}"}
+            =link_to "#{area[:name]}", js_void
           
-      #margate.hide
-        margate content
-      #longport.hide
-        longport
-      #ocean-city.hide
-        OC content
-      #brigantine.hide
-        Brig content
+    .container
+      -for area in @all_areas_construct
+        %div{id: area[:name].sub(" ", "-"), class:'hide'}
+          -for @section in area[:properties]
+            =render 'common/unit'
 
+     
 
 
           

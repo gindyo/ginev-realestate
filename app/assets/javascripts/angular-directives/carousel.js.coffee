@@ -205,8 +205,8 @@ angular.module('GinevDirectives').directive 'ginevCarousel', ($timeout)->
       right.appendChild rArrow
       lArrow = document.createElement 'div'
       lArrow.className = 'ginev-carousel-arrow l-arrow'
-      $(lArrow).tooltip({trigger: 'hover', title:'as it turns out, making a looping carousel that works the same in most browsers was trickier then I thought. :)'})
-      $(rArrow).tooltip({trigger: 'hover', title:'as it turns out, making a looping carousel that works the same in most browsers was trickier then I thought. :)'})
+      $(lArrow).tooltip({trigger: 'hover', title:'as it turns out, making a looping carousel that works in IE8 was trickier then I thought. :)'})
+      $(rArrow).tooltip({trigger: 'hover', title:'as it turns out, making a looping carousel that works in IE8 was trickier then I thought. :)'})
       left.appendChild lArrow
       $e(element).append left
       $e(element).append right 
@@ -245,7 +245,7 @@ angular.module('GinevDirectives').directive 'propertyForCarousel', ()->
     scope: {}
     template: '
       <div>
-      <img ng-src="{{unit.img_url}}">
+      <img ng-src="{{unit.picture}}">
       <div class="ginev-carousel-prop-caption">
         <div style="float: left"><h3>$ {{unit.price}}</h3></div>
         <div style="float: right"><h3> {{unit.address}}</h3></div>
