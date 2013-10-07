@@ -13,7 +13,9 @@ gem 'haml-rails'
 gem 'mysql2'
 gem 'simple_form', '>= 3.0.0.rc'
 gem 'thin'
-
+group :production do 
+  gem 'pg'
+end
 group :development do
   gem 'byebug'
   gem 'spork-rails'
