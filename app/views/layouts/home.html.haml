@@ -6,10 +6,10 @@
       %title= content_for?(:title) ? yield(:title) : "Ginev"
       %meta{:content => content_for?(:description) ? yield(:description) : "Ginev", :name => "description"}
         = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Lato:300,400,700|Cinzel+Decorative:400,700|Ubuntu:500'
-        = stylesheet_link_tag "bootstrap_and_overrides", :media => "all"
-        = stylesheet_link_tag 'home/index'
-        = javascript_include_tag "application"
-        = javascript_include_tag "home"
+        = stylesheet_link_tag "/assets/bootstrap_and_overrides", :media => "all"
+        = stylesheet_link_tag '/assets/home/index'
+        = javascript_include_tag "/assets/application"
+        = javascript_include_tag "/assets/home"
         = csrf_meta_tags
         = yield(:head)
      
