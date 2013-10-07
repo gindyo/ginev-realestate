@@ -6,3 +6,4 @@
 //=require angular-directives/units-gallery
 //=require bower_components/jquery-ui/ui/minified/jquery-ui.min
 //=require angular-directives/re-slider
+//=require angular-pagination/pagination

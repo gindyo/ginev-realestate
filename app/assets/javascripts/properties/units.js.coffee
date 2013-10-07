@@ -146,10 +146,8 @@ angular.module('Index').factory 'units', (server)->
       a1 = a.splice(midpoint, a.length-midpoint)
       [a1, a]
     
-    counter = 0
+    
     mergeSort = (arr, pos)->
-      counter = counter + 1
-      console.log counter if counter % 100 == 0
       sorted = []
       if arr.length == 1
         return arr
