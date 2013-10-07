@@ -1,4 +1,4 @@
-angular.module('Server', []).service 'server', ($http)->
+angular.module('Server', []).service 'server',['$http', ($http)->
   getProperties = (properties_type, callback)->
     returnedData = null
     url = '/properties/'+properties_type
@@ -21,3 +21,4 @@ angular.module('Server', []).service 'server', ($http)->
     allAreas: allAreas
     getUnit: getUnit
   }
+]

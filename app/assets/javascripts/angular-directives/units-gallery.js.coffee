@@ -1,5 +1,5 @@
 @angular.module('GinevDirectives')
-  .directive 'reUnitsGallery',($timeout)->
+  .directive 'reUnitsGallery',['$timeout', ($timeout)->
     restrict: 'AC'
 
     scope: {
@@ -33,9 +33,7 @@
                 duration: 1500
               )
             )
-
-        
-      
+  ]
 
   
          

@@ -7,7 +7,7 @@ angular.module('Index').service('unitsCache', ->
       units: units
     }
   )
-angular.module('Index').controller 'IndexCtrl', ($scope, server, units, $routeParams, unitsCache)->
+angular.module('Index').controller 'IndexCtrl', [ '$scope', 'server', 'units', '$routeParams', 'unitsCache', ($scope, server, units, $routeParams, unitsCache)->
   
   $scope.slidingMin = 0
   $scope.slidingMax = 0
@@ -65,3 +65,4 @@ angular.module('Index').controller 'IndexCtrl', ($scope, server, units, $routePa
     $scope.units.resort()
     $scope.units.applyFilters()
     $scope.currentPage = $scope.units.currentPage()
+]

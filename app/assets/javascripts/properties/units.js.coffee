@@ -1,4 +1,4 @@
-angular.module('Index').factory 'units', (server)->
+angular.module('Index').factory 'units',['server', (server)->
   units = ->  
     all = []
     meta = {}
@@ -208,3 +208,4 @@ angular.module('Index').factory 'units', (server)->
      
     }
   return units
+]

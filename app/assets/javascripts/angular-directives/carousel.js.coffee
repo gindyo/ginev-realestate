@@ -1,4 +1,4 @@
-angular.module('GinevDirectives').directive 'ginevCarousel', ($timeout)->
+angular.module('GinevDirectives').directive 'ginevCarousel', ['$timeout', ($timeout)->
   $e = angular.element
   carouselOptions = {
     itemWidth: 1170
@@ -219,7 +219,7 @@ angular.module('GinevDirectives').directive 'ginevCarousel', ($timeout)->
           $e(items.parent).css 'margin-left', -(3*carouselOptions.itemWidth) + ($e(document.body).width()/2) + (carouselOptions.itemWidth/2)
       
   }
-
+]
 
 angular.module('GinevDirectives').directive 'propertyForCarousel', ()->
   $($(document).find('head')[0]).append '
@@ -255,19 +255,3 @@ angular.module('GinevDirectives').directive 'propertyForCarousel', ()->
         scope.unit = JSON.parse attr.unit
     }
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
