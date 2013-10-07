@@ -1,5 +1,3 @@
-carouselOptions = {}
-
 angular.module('GinevDirectives').directive 'ginevCarousel', ($timeout)->
   $e = angular.element
   carouselOptions = {
