@@ -1,4 +1,4 @@
-angular.module('Index').factory 'units',['server', (server)->
+angular.module('Index').factory 'units', ['server', (server)->
   units = ->  
     all = []
     meta = {}
@@ -53,7 +53,7 @@ angular.module('Index').factory 'units',['server', (server)->
       currentPage: 1
       numPerPage: 8
     }
-    pagination['numOfPages'] = 0 
+    pagination['numOfPages'] = 0
 
     filters['reverseIt'] = false
 
@@ -146,7 +146,7 @@ angular.module('Index').factory 'units',['server', (server)->
       a1 = a.splice(midpoint, a.length-midpoint)
       [a1, a]
     
-    
+
     mergeSort = (arr, pos)->
       sorted = []
       if arr.length == 1
@@ -170,30 +170,7 @@ angular.module('Index').factory 'units',['server', (server)->
           while m1.length > 0
             sorted.push m1.shift()
           return sorted
-
-    merge = (left, right, pos)->
-      res = []
-      lkey = 0
-      rkey = 0
-      while(lkey < left.lenght && rkey < right.length)
-        if (left[lkey][pos]<right[rkey][pos])
-          res.push left[lkey]
-          lkey = lkey + 1
-        else
-          res.push right[rkey]
-          rkey = rkey + 1
-      return res.concat(left.slice(lkey), right.slice(rkey))
-
-    mergeSort1= (input, pos)->
-      if input.length < 2
-        return input
-      divideElem = Math.floor(input.length / 2)
-      left = input.splice(0, divideElem)
-      right = input.slice(divideElem)
-      return merge(mergeSort(left), mergeSort(right), pos)
-
-    
-
+   
     return { 
       unitsLoaded: -> all.length > 0
       all:  allUnits()

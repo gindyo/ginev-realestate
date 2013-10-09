@@ -1,21 +1,8 @@
-Index = angular.module('Index', ['Server', 'ngRoute','GinevDirectives', 'ui.bootstrap'])
-angular.module('Index').service('unitsCache', ->
-    units = null
-    area = null
-    return {
-      area : area
-      units: units
-    }
-  )
-angular.module('Index').controller 'IndexCtrl', [ '$scope', 'server', 'units', '$routeParams', 'unitsCache', ($scope, server, units, $routeParams, unitsCache)->
-  
+angular.module('Index', ['Server', 'GinevDirectives', 'ui.bootstrap'])
+angular.module('Index').controller 'IndexCtrl', ['$scope', 'server', 'units', ($scope, server, units)->
+  $scope.units = new units()
   $scope.slidingMin = 0
   $scope.slidingMax = 0
-  $scope.showProgressBar = -> !unitsCache.units || unitsCache.area != $routeParams.id
-  if !unitsCache.units || unitsCache.area != $routeParams.id
-    unitsCache.units = new units() 
-    unitsCache.area = $routeParams.id
-  $scope.units = unitsCache.units
   $scope.filters = $scope.units.filters
   $scope.pagination = $scope.units.pagination
 
@@ -65,4 +52,7 @@ angular.module('Index').controller 'IndexCtrl', [ '$scope', 'server', 'units', '
     $scope.units.resort()
     $scope.units.applyFilters()
     $scope.currentPage = $scope.units.currentPage()
+
+  $scope.$watch 'units.filters.ranges | json', ->
+    $scope.units.applyFilters()
 ]

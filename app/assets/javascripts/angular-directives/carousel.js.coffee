@@ -1,4 +1,5 @@
-angular.module('GinevDirectives').directive 'ginevCarousel', ['$timeout', ($timeout)->
+
+angular.module('GinevDirectives').directive('ginevCarousel', ['$timeout', ($timeout)->
   $e = angular.element
   carouselOptions = {
     itemWidth: 1170
@@ -14,9 +15,7 @@ angular.module('GinevDirectives').directive 'ginevCarousel', ['$timeout', ($time
       else
         return 5
       return 5
-
   }
-
   $($(document).find('head')[0]).append '
    <style>
     .ginev-carousel-slide{
@@ -82,8 +81,7 @@ angular.module('GinevDirectives').directive 'ginevCarousel', ['$timeout', ($time
     }
   
     </style>
- '
-
+  '
   class window.Mover
     interval: null
     direction: 100
@@ -185,6 +183,7 @@ angular.module('GinevDirectives').directive 'ginevCarousel', ['$timeout', ($time
       $e(el.element).show()
     intValue: (el, key)->
       parseInt($e(el).css(key).slice(0,-2)) || 0
+  
   return  {
     restrict: 'CA'
     scope: {}
@@ -219,9 +218,9 @@ angular.module('GinevDirectives').directive 'ginevCarousel', ['$timeout', ($time
           $e(items.parent).css 'margin-left', -(3*carouselOptions.itemWidth) + ($e(document.body).width()/2) + (carouselOptions.itemWidth/2)
       
   }
-]
+])
 
-angular.module('GinevDirectives').directive 'propertyForCarousel', ()->
+angular.module('GinevDirectives').directive 'propertyForCarousel', ->
   $($(document).find('head')[0]).append '
     <style> 
     .ginev-carousel-prop-caption{

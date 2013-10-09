@@ -18,6 +18,12 @@ module Monroe
       
       g.view_specs false
       g.helper_specs false
+      # Enable the asset pipeline
+      config.assets.enabled = true
+ 
+      # Version of your assets, change this if you want to expire all your assets
+      config.assets.version = '11'
+ 
     end
     
     

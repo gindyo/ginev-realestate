@@ -27,7 +27,7 @@ module Repo
         i = i+1
         props << Property.new({
           id: i,
-          price: Random.rand(0..7000000),
+          price: Random.rand(80000..7000000),
           address: "#{p} #{streets[Random.rand(0..3)]}",
           pictures: ["#{p}.0.jpg"],
           bedrooms: Random.rand(0..8),

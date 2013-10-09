@@ -1,45 +1,75 @@
 @angular.module('GinevDirectives')
   .directive 'reSlider', ->
     restrict: 'AC'
-    
-    scope: {
-      min: '@'
-      max: '@'
-      range: '='
-      sliderChange: '&'
-    }
-    compile: (element, attrs, link)->
-      low = document.createElement('span')
-      low.innerHTML = '{{slidingMin}}'
-      low.setAttribute('style', 'position: absolute; left: -20px; bottom: -20px')
-      element.prepend(low)
-      high = document.createElement('span')
-      high.innerHTML = '{{slidingMax}}'
-      high.setAttribute('style', 'position: absolute; right: -20px; bottom: -20px')
-      element.prepend(high)
+    # scope: {
+    #   animate: '='
+    #   disabled: '='
+    #   max: '='
+    #   min: '='
+    #   orientation: '='
+    #   range: '='
+    #   step: '='
+    #   value: '='
+    #   values: '='
+    #   change: '='
+    #   create: '='
+    #   start: '='
       
-      link = (scope, element, attrs)->      
-        @rangeWidth = 0
-        scope.$watch 'min + max + range', =>
-          slider_options = {min: 1, max: scope.max, animate: 'slow'}
-          slider_options = {range: scope.range, values: [0,100]} if scope.range == true 
-          @rangeWidth = scope.max - scope.min
-          element.slider(slider_options)
-            
-        currentMinValue = -> 
+    # }
+    link: (scope, element, attrs)->
+      label = document.createElement('label')
+      label.setAttribute('style', 'margin-top: -22px')
+      
+      element.slider()
+      
+      setWatch = (option)->
+        scope.$watch "#{option} | json", ->
+          $(element).slider 'option', option, scope[option]
+      
+      for option, value in [
+        'animate',
+        'disabled',
+        'max',
+        'min',
+        'orientation',
+        'range',
+        'step',
+        'value',
+        'values',
+        'change',
+        'create',
+        'slide',
+        'start',
+        'stop']
+        $(element).slider 'option', option, scope[option]
+        setWatch(option)
+
+
+      currentMinValue = -> 
           if element.slider('values')[0] == 0
             return scope.min
           else
-            Math.ceil((scope.max * element.slider('values')[0]) / 100)
-        currentMaxValue = -> Math.ceil((scope.max * element.slider('values')[1]) / 100)
+            element.slider('values')[0]
+      currentMaxValue = ->
+        element.slider('values')[1]
+      
+      scope.stop = (event, ui)->
+        $(label).text('')
+        $(ui.handle).children(label).remove()
+        scope.$apply ->
+          if ui.value > currentMinValue()
+            scope.values = [currentMinValue(), ui.value] if scope.range == true
+          else
+            scope.values = [ui.value, currentMaxValue()] if scope.range == true
+          
+      scope.start = (event, ui) ->
+        $(ui.handle).append label
+        $(label).text(ui.value) 
         
-        
-        element.slider
-          stop: ->
-            if scope.range
-              scope.sliderChange({values: {lo:currentMinValue(),hi:currentMaxValue()}})
-            else
-              scope.sliderChange({values: {lo:element.slider('value')}})
-          slide: (event, ui)->
-            $(ui.handle).text(ui.value) if attrs.showValues
-     
+      scope.slide =  (event, ui)->
+        $(label).text(ui.value) 
+       
+      
+      
+
+

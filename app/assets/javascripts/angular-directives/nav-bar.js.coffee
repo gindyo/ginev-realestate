@@ -1,4 +1,4 @@
-angular.module('GinevDirectives').directive 'navigation1', ()->
+angular.module('GinevDirectives').directive 'navigation', ->
   $($(document).find('head')[0]).append '
     <style> 
     .ginev-navigation1{
@@ -24,7 +24,6 @@ angular.module('GinevDirectives').directive 'navigation1', ()->
   template: '
     <div ng-transclude class="ginev-navigation1">
   '
-  #compile: (element)->
     
   link: (scope, element)->
     elements = element.children()[0].children.length

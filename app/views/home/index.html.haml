@@ -26,7 +26,7 @@
         
   #areas
     #nav-wrap
-      #navigation.container(navigation1)
+      #navigation.container(navigation)
         -for area in @all_areas_construct
           %span{"data-content" => "##{area[:name].sub(" ", "-")}"}
             =link_to "#{area[:name]}", js_void
