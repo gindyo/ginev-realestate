@@ -53,7 +53,7 @@ angular.module('Index').factory 'units', ['server', (server)->
       currentPage: 1
       numPerPage: 8
     }
-    pagination['numOfPages'] = 0
+    pagination['numOfPages'] = 3
 
     filters['reverseIt'] = false
 

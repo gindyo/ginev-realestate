@@ -6,21 +6,13 @@
   <div class="container">
     <div class='left' id='filters'>
       <div class='slider-wrap'>
-        <div re-slider ></div>
+        <br>
         <div re-range-slider title="Price" edges="filters.ranges.price.edges" current="filters.ranges.price.current" ></div>
-        <!-- <span>Price Range:</span>
-        <div class="text-center">{{filters.ranges.price.current[0]}}-{{filters.ranges.price.current[1]}}</div>
-        <div re-slider range="true" min="{{filters.ranges.price.edges[0]}}" max='{{filters.ranges.price.edges[1]}}' slider-change='priceSliderChange(values)'></div>
-        <br>
-        <span>Bedrooms Range:</span>
-        <div class="text-center">{{filters.ranges.bedrooms.current[0]}}-{{filters.ranges.bedrooms.current[1]}}</div>
-        <div re-slider range="true" min="{{filters.ranges.bedrooms.edges[0]}}" max='{{filters.ranges.bedrooms.edges[1]}}' slider-change='bedroomsSliderChange(values)'></div>
-        <br> 
-        <span>Bathrooms Range:</span>
-        <br>
-
-        <div class="text-center">{{filters.ranges.bathrooms.current[0]}}-{{filters.ranges.bathrooms.current[1]}}</div>
-        <div re-slider range="true" min="{{filters.ranges.bathrooms.edges[0]}}" max='{{filters.ranges.bathrooms.edges[1]}}' slider-change='bathroomsSliderChange(values)'></div> -->
+        
+        <div re-range-slider title="Bedrooms" edges="filters.ranges.bedrooms.edges" current="filters.ranges.bedrooms.current" ></div>
+        
+        <div re-range-slider title="Bathrooms" edges="filters.ranges.bathrooms.edges" current="filters.ranges.bathrooms.current" ></div>
+        
       </div>
     </div> 
     <div id='right'>
@@ -70,16 +62,16 @@
         <div class="clearfix"></div>
       </div>
       <div class='pagination-wrap'>
-        <div page='pagination.currentPage' items-per-page='pagination.numPerPage' max-size='5' total-items='pagination.totalUnits()' on-select-page='changePage(page)' num-pages='pagination.numOfPages' pagination></div>
-        <span id='to_page'>
+        <div page='pagination.currentPage' items-per-page='pagination.numPerPage' max-size='5' total-items='filters.inRangeIndexes.length' on-select-page='changePage(page)' num-pages='pagination.numOfPages' pagination></div>
+        <!-- <span id='to_page'>
           go to page:
           <input class='input-small' class='number' min='1' ng-model='pagination.currentPage' type='number'>
           from {{pagination.numOfPages}}
-        </span>
-        Move the slider to change pages
+        </span> -->
         <div id='page-slider'> 
-         <!-- <div re-pagination-slider show-values='true' range="false" min="1" max="pagination.numOfPages" slider-change='pageSliderChange(values)' cur-page='curPage'> </div> -->
-         {{pagination.numOfPages}}
+          Move the slider to change pages
+          <div re-pagination-slider max="{{pagination.numOfPages}}" current-page='pagination.currentPage'> </div>
+
        </div>
       </div>
 

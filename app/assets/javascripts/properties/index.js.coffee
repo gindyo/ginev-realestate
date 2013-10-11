@@ -55,4 +55,6 @@ angular.module('Index').controller 'IndexCtrl', ['$scope', 'server', 'units', ($
 
   $scope.$watch 'units.filters.ranges | json', ->
     $scope.units.applyFilters()
+
+
 ]
