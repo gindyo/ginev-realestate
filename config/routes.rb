@@ -1,8 +1,10 @@
 Monroe::Application.routes.draw do
   root :to => "home#index"
   match '/home/:action' => "home#:action", via: :get
-  get '/angular-directives'=> 'home#angular_directives'
-  get '/search' => 'search#inedex', as: :search
   get '/properties' => 'properties#index'
-  get '/properties/:action' => 'properties#:action'
+  get '/properties/all' => 'properties#all'
+  get '/properties/for_rent' => 'properties#for_rent'
+  get '/properties/for_sale' => 'properties#for_sale'
+  get '/properties/:id' => 'properties#show'
+
 end

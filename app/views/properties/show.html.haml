@@ -1,0 +1,52 @@
+-content_for :action_specific_styles, :property
+#top-navigation.container
+  = render 'layouts/navigation'
+#main{:role => "main"}
+  #carousel(ginev-carousel)
+    -for p in (0..4)
+      .img
+        .img(style="width: auto")
+          =image_tag "#{p}.jpg", {:onError=>" this.src = 'http://www.realtimerental.com/rrv10/rentalphotos/15/#{@property[:pictures][0]}'"}
+  #property-summary.container
+    .row.row1.span12
+      .span2.key
+        Price: 
+      .span1.value
+        ="${{#{@property[:price]} | number}}"
+      .span2.span-inner.key
+        Type: 
+      .span1.value
+        =@property[:property_type]
+      .span2.span-inner.key
+        Approximate. Sq. Ft. :
+      .span1.value
+        =@property[:sqft]
+    .row.span12
+      .span2.key
+        Rooms:
+      .span1.value
+        =@property[:rooms]
+      .span2.span-inner.key
+        Bedrooms:
+      .span1.value
+        =@property[:bedrooms]
+      .span2.span-inner.key
+        Bathrooms:
+      .span1.value
+        =@property[:bathrooms]
+  .nav-wrap
+    .container
+      #navigation.row.span12(navigation)
+        %span4(data-content="#description")
+          =link_to 'Description', js_void
+        %span4(data-content="#location")
+          =link_to 'Location', js_void
+        %span
+        %span
+        %span
+  .container
+    #description.content.hide
+      =@property[:description]
+    #location.content.hide
+      this is location
+    

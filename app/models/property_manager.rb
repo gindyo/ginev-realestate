@@ -9,6 +9,12 @@ module PropertyManager
     end
     areas.uniq
   end
+  
+  #get a single property
+  def self.property id
+    REPOSITORY.find_by_id id.to_i
+  end
+
   def self.all
     self.all_properties
   end
@@ -18,19 +24,22 @@ module PropertyManager
   def self.for_rent
     REPOSITORY.for_rent
   end
+
+  def self.for_sale_in area
+    all_properties.select{|p| p.area == area}
+  end
  
-  def self.new_dev area
+  def self.new_dev_in area
     props = all_properties.select{|p| p.area == area}
     props.sort_by { |p| p.year_built }
   end
  
-  def self.over_500k area
+  def self.over_500k_in area
     all_properties.select{|p| p.price > 500000 && p.area == area}
   end
+
  
-  def self.for_sale area
-    all_properties.select{|p| p.area == area}
-  end
+
  
   def self.featured_properties
     REPOSITORY.featured_properties

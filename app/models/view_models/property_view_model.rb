@@ -16,7 +16,7 @@ module ViewModels::PropertyViewModel
     ]
   end
   def self.property_page_view property
-    check_if_property_and_return property, {
+    p = check_if_property_and_return property, {
           price: property.price,
           address: property.address,
           pictures: property.pictures,
@@ -28,8 +28,8 @@ module ViewModels::PropertyViewModel
           description: property.description,
           features: property.features,
           location: property.location
-
-        }.to_json
+        }
+     p
   end
   private
     def self.check_if_property_and_return property, return_value

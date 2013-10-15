@@ -25,7 +25,7 @@
           =image_tag 'agent.jpg'
         
   #areas
-    #nav-wrap
+    .nav-wrap
       #navigation.container(navigation)
         -for area in @all_areas_construct
           %span{"data-content" => "##{area[:name].sub(" ", "-")}"}

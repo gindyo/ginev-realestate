@@ -8,6 +8,7 @@
         = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Lato:300,400,700|Cinzel+Decorative:400,700|Ubuntu:500'
         = stylesheet_link_tag "bootstrap_and_overrides", :media => "all"
         = stylesheet_link_tag 'home/index'
+        = stylesheet_link_tag "#{params[:controller]}/#{params[:action]}"
         = javascript_include_tag "application"
         = javascript_include_tag "home"
         = csrf_meta_tags

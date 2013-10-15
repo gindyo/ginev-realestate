@@ -33,15 +33,12 @@ angular.module('GinevDirectives').directive('ginevCarousel', ['$timeout', ($time
       opacity: 1; 
       color: '+carouselOptions.captionTxtColor+'
     }
-    .ginev-carousel-slide img{
-      width: 100%
-    }
+    
     .ginev-carousel-nav{
       background: url(/assets/blank.png);
       display: block;
       position: absolute;
       top: 0px;
-      height: 450px;
       opacity: 0.5;
       cursor: pointer;
       width: '+($e(document.body).width()-carouselOptions.itemWidth)/2+'px;
@@ -209,6 +206,7 @@ angular.module('GinevDirectives').directive('ginevCarousel', ['$timeout', ($time
       $e(element).append right 
 
       return (scope, element)=>
+        throw "This Carousel does not work with less then 5 items" if $(element.children()[0].children).lenght < 1
         window.items = scope.itemsLoop = new Loopobject(element.children()[0].children)
         $e(left).on "click", ->
           scope.itemsLoop.previous()

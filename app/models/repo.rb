@@ -9,12 +9,29 @@ module Repo
       ids = [1,2,3,4,5]
       self.sale_properties.select{|p| ids.include? p.id }
     end
+
+    def self.find_by_id id
+      all.select{|p| p.id == id }.first
+    end
+    def self.all
+      sale_properties + rent_properties
+    end
     
    
     private 
+    def self.streets
+      ['Park ave.', 'Main str.', 'Broad str.', 'Atlantic ave.' ]
+    end
+
+    def self.areas
+      ['Margate', 'Ventnor', 'Ocean City', 'Brigantine', 'Longport', 'Somers Point', 'Northfield']
+    end
+
+    def self.property_types
+      ['Condo', 'House', 'Apartment']
+    end
+
     def self.sale_properties
-      areas = ['Margate', 'Ventnor', 'Ocean City', 'Brigantine', 'Longport', 'Somers Point', 'Northfield']
-      streets = ['Park ave.', 'Main str.', 'Broad str.', 'Atlantic ave.' ]
       props = [
         Property.new({id: 1, year_built: Random.rand(1955..2013), price: 1000000, address: '123 Main str.', pictures: ['/assets/1.jpg'], bedrooms: 5, bathrooms: 3, area: 'Margate'}),
         Property.new({id: 2, year_built: Random.rand(1955..2013), price: 10000000, address: '123 Main str.', pictures: ['/assets/5.jpg'], bedrooms: 5, bathrooms: 3, area: 'Ventnor'}),
@@ -33,7 +50,9 @@ module Repo
           bedrooms: Random.rand(0..8),
           bathrooms: Random.rand(0..5),
           area: areas[Random.rand(0..areas.count-1)],
-          year_built: Random.rand(1955..2013)
+          year_built: Random.rand(1955..2013),
+          property_type: property_types[Random.rand(0..2)],
+          description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.'
         })
         #props.push ([p, Random.rand(0..700000), p.to_s+'.0.TH.jpg', Random.rand(0..7), Random.rand(0..8), '1 main'])
       end
@@ -41,8 +60,6 @@ module Repo
     end
 
     def self.rent_properties
-      areas = ['Margate', 'Ventnor', 'Ocean City', 'Brigantine', 'Longport', 'Somers Point', 'Northfield']
-      streets = ['Park ave.', 'Main str.', 'Broad str.', 'Atlantic ave.' ]
       props = []
       i = 5
       for p in [15001, 15024, 15025, 15028, 15060, 15084, 15085, 15086, 15087, 15088, 15089, 15093, 15093, 15117, 15127, 15131, 15137, 15137, 15137, 15139, 15140, 15143, 15145, 15151, 15151, 15156, 15156, 15157, 15157, 15164, 15169, 15187, 15189, 15191, 15199, 15199, 15201, 15201, 15216, 15220, 15231, 15235, 15239, 15254, 15256, 15259, 15263, 15266, 15270, 15273, 15274]
@@ -55,7 +72,9 @@ module Repo
           bedrooms: Random.rand(0..8),
           bathrooms: Random.rand(0..5),
           area: areas[Random.rand(0..areas.count-1)],
-          year_built: Random.rand(1955..2013)
+          year_built: Random.rand(1955..2013),
+          property_type: property_types[Random.rand(0..2)],
+          description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.'
         })
         
       end

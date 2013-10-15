@@ -11,9 +11,9 @@ class HomeController < ApplicationController
       @all_areas_construct << { 
         name: area,
         properties: [
-          {title: 'For Sale', property: ViewModels::PropertyViewModel.home_page_view(PropertyManager.for_sale(area).last)},
-          {title: 'Over $500k', property: ViewModels::PropertyViewModel.home_page_view(PropertyManager.over_500k(area).first)},
-          {title: 'New Development' ,property: ViewModels::PropertyViewModel.home_page_view(PropertyManager.new_dev(area).last)}
+          {title: 'For Sale', property: ViewModels::PropertyViewModel.home_page_view(PropertyManager.for_sale_in(area).last)},
+          {title: 'Over $500k', property: ViewModels::PropertyViewModel.home_page_view(PropertyManager.over_500k_in(area).first)},
+          {title: 'New Development' ,property: ViewModels::PropertyViewModel.home_page_view(PropertyManager.new_dev_in(area).last)}
         ]
       }
     end
