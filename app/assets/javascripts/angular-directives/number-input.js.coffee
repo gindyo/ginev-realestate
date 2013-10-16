@@ -3,12 +3,12 @@ angular.module('GinevDirectives').directive 'numberInput',->
   scope: {
     inputValue: '='
     displayValue: '@'
-
-    
   }
   replace: true
   template: '
-    <input ng-model="displayValue" style=" border: 1px solid #eee; display: block-span" placeholder="0">
+    <div>
+      <input ng-model="displayValue" style=" width: 80px; border: 1px solid #eee; display: block-span" placeholder="0">
+    </div>
   '
   controller: ['$scope', ($scope)->
     $scope.$watch 'inputValue', ->
@@ -32,10 +32,9 @@ angular.module('GinevDirectives').directive 'numberInput',->
         stringChunks = []
         for chunk in chunks
           stringChunks.push chunk.join().replace(/[^0-9]/g,'')
-        $scope.displayValue = stringChunks.join() 
+        $scope.displayValue = stringChunks.join()
+        
       else 
         ''
   ]
-  link: 
-    pre: (scope)->
-      
+

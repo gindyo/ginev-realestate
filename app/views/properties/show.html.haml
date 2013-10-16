@@ -6,7 +6,7 @@
     -for p in (0..4)
       .img
         .img(style="width: auto")
-          =image_tag "#{p}.jpg", {:onError=>" this.src = 'http://www.realtimerental.com/rrv10/rentalphotos/15/#{@property[:pictures][0]}'"}
+          =image_tag "#{p}.jpg", {:onError=>" this.src = 'http://www.realtimerental.com/rrv10/rentalphotos/15/#{@property[:pictures][0]}'; this.onerror = null"}
   #property-summary.container
     .row.row1.span12
       .span2.key
@@ -36,16 +36,16 @@
         =@property[:bathrooms]
   .nav-wrap
     .container
-      #navigation.row.span12(navigation)
-        %span4(data-content="#description")
+      #navigation.container(navigation)
+        %span4{"data-content"=>"#description" , active: true}
           =link_to 'Description', js_void
-        %span4(data-content="#location")
+        %span4{"data-content"=>"#location"}
           =link_to 'Location', js_void
         %span
         %span
         %span
   .container
-    #description.content.hide
+    #description.content
       =@property[:description]
     #location.content.hide
       this is location

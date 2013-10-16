@@ -28,6 +28,8 @@ angular.module('GinevDirectives').directive 'navigation', ->
   link: (scope, element)->
     elements = element.children()[0].children.length
     for el, i in element.children()[0].children
+      if $(el).attr('active')
+        active = el
       $(el).on 'click', ()->
         oldActiveContent =  $(active).data 'content'
         $(oldActiveContent).css 'display', 'none'

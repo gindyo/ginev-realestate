@@ -3,7 +3,7 @@
     restrict: 'AC'
     link: (scope, element, attrs)->
       label = document.createElement('label')
-      label.setAttribute('style', 'margin-top: -22px')
+      label.setAttribute('style', 'margin-top: -22px') if label.setAttribute
       element.slider()
       if scope.range == true
         $(element).slider('widget').children().first().addClass('min') 

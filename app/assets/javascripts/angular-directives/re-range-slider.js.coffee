@@ -9,26 +9,26 @@
     template: '
     <div>
       <br>
-      <div re-slider ></div>
+      <div re-slider style="margin-bottom: 5px" ></div>
       <table>
         <tr>
           <td>
             <span>Min {{title}}</span>
           </td>
           <td>
-            <input number-input input-value="values[0]" style="width: 70%; float: right; display: block">
+            <div number-input input-value="values[0]" style=" margin-left: 5px; width: 80px; float: right; "></div>
           </td>
         <tr>
           <td>
             <span>Max {{title}}</span>
           </td>
           <td>
-            <input number-input style="width: 70%; float: right" input-value="values[1]" >
+            <div number-input style="margin-left: 5px; width: 80px; float: right" input-value="values[1]" ></div>
           </td>
         </tr>
       </table>
-      </div>
-      '
+    </div>
+    '
     controller: ['$scope',($scope)-> 
       $scope.$watch 'values | json', ->
         $scope.current[0] = $scope.values[0] = setMaxMin($scope.values[0]) if $scope.current && $scope.values
