@@ -12,7 +12,7 @@
       .span2.key
         Price: 
       .span1.value
-        ="${{#{@property[:price]} | number}}"
+        ="$#{number_with_delimiter(@property[:price], delimiter:',')}"
       .span2.span-inner.key
         Type: 
       .span1.value

@@ -27,11 +27,11 @@ angular.module('GinevDirectives').directive 'numberInput',->
         digit = digit.toString().split('') 
         chunks = []
         while digit.length > 3
-            chunks.unshift digit.splice(-3,3)
-          chunks.unshift digit
-          stringChunks = []
-          for chunk in chunks
-            stringChunks.push chunk.join().replace(/[^0-9]/g,'')
+          chunks.unshift digit.splice(-3,3)
+        chunks.unshift digit
+        stringChunks = []
+        for chunk in chunks
+          stringChunks.push chunk.join().replace(/[^0-9]/g,'')
         $scope.displayValue = stringChunks.join() 
       else 
         ''

@@ -1,5 +1,5 @@
 @angular.module('GinevDirectives')
-  .directive 'reSlider', ->
+  .directive 'reSlider',['$filter', ($filter)->
     restrict: 'AC'
     link: (scope, element, attrs)->
       label = document.createElement('label')
@@ -58,11 +58,12 @@
         scope.onStart(event, ui) if typeof scope.onStart != 'undefined'
         
       scope.slide =  (event, ui)->
-        $(label).text(ui.value) 
+        $(label).text(convert ui.value) 
+        scope.onSlide(event, ui) if typeof scope.onSlide != 'undefined'
 
       scope.change = (event, ui)->
         scope.onChange(event, ui) if typeof scope.onChange!= 'undefined'
       
-      
-
-
+      convert = (digit)->
+        $filter('number')(digit)
+]

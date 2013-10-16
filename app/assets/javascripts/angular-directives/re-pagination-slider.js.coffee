@@ -11,6 +11,10 @@ angular.module('GinevDirectives')
       $scope.min = 1
       $scope.value = 1
       $scope.range = false
+      $scope.onSlide = (event, ui)->
+        $scope.currentPage = ui.value
+        $scope.$apply()
+
       $scope.$watch 'value', ->
         $scope.currentPage = $scope.value if $scope.value != $scope.currentPage 
       $scope.$watch 'currentPage', ->

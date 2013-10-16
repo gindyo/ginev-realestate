@@ -4,7 +4,9 @@
     
   =link_to 'View all', "/properties"
   .ginev-unit
-    =image_tag @section[:property][:picture]
+    =link_to "/properties/#{@section[:property][:id]}" do 
+      =image_tag @section[:property][:picture]
     %h5.address
-      =@section[:property][:address]
+      =link_to "/properties/#{@section[:property][:id]}" do
+        =@section[:property][:address]
 

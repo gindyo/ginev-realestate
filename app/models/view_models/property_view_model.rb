@@ -3,6 +3,7 @@ module ViewModels::PropertyViewModel
     check_if_property_and_return property, {
       price: property.price, address: property.address,
       picture: if property.pictures[0][0]== '/' then property.pictures[0] else 'http://www.realtimerental.com/rrv10/rentalphotos/15/'+property.pictures[0].to_s end,
+      id: property.id
     }
   end
   def self.results_page_view property

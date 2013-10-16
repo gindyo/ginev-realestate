@@ -242,7 +242,7 @@ angular.module('GinevDirectives').directive 'propertyForCarousel', ->
       <div>
       <img ng-src="{{unit.picture}}">
       <div class="ginev-carousel-prop-caption">
-        <div style="float: left"><h3>$ {{unit.price}}</h3></div>
+        <div style="float: left"><h3>$ {{unit.price | number}}</h3></div>
         <div style="float: right"><h3> {{unit.address}}</h3></div>
       </div>
       </div>

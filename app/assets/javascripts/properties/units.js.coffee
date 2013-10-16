@@ -34,6 +34,7 @@ angular.module('Index').factory 'units', ['server', (server)->
         filters.ranges.bedrooms.edges = [bedrooms_edges[0], bedrooms_edges[1]]
         callback() if callback
         applyFilters()
+        sortUnits()
         return
    
     allUnits = ->
@@ -60,7 +61,7 @@ angular.module('Index').factory 'units', ['server', (server)->
     filters = {
       orderBy: 'price'
       orderDirection: -> 
-        if @reverseIt then 'up' else 'down'
+        if @reverseIt then 'down' else 'up'
       inRangeIndexes: []
       ranges: {
         price: {
