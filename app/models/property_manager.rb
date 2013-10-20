@@ -13,7 +13,7 @@ module PropertyManager
   #get a single property
   def self.property id
     REPOSITORY.find_by_id id.to_i
-  end
+  end 
 
   def self.all
     self.all_properties

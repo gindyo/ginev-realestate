@@ -25,11 +25,12 @@
       .span2.key
         Rooms:
       .span1.value
-        =@property[:rooms]
+        =@property[:rooms] or 0
+
       .span2.span-inner.key
         Bedrooms:
       .span1.value
-        =@property[:bedrooms]
+        =@property[:bedrooms] or 0
       .span2.span-inner.key
         Bathrooms:
       .span1.value

@@ -7,4 +7,7 @@ Monroe::Application.routes.draw do
   get '/properties/for_sale' => 'properties#for_sale'
   get '/properties/:id' => 'properties#show'
 
+#administration controller
+  get '/administration' => 'administration#index'
+  post '/administration/update_listings' => 'administration#update_listings'
 end

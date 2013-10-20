@@ -1,4 +1,5 @@
 class Property 
+
   include ActiveModel
   attr_accessor :id, :address, :mls, :area, :price, :pictures,
               :bedrooms, :bathrooms, :property_type,
@@ -23,5 +24,8 @@ class Property
     @year_built = property[:year_built]
   end
 
+  def update
+    
+  end
 
 end
